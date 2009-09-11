@@ -2,22 +2,13 @@
 	position: absolute;
 	top: 0;
 	left: 0;
+	margin: -20px 0 0 -20px;
 	z-index: 100;
 	text-align: left;
 	padding: 18px;
 	min-width: 40px;
 	min-height: 40px;
 }
-.facyLoading{
-	height: 40px;
-	width: 40px;
-	cursor: pointer;
-	display: none;
-	background: #f00 url('images/fancy_progress.png') no-repeat;
-	z-index: 100;
-	position: absolute;
-}
-
 #facybox .n, #facybox  .s,  #facybox .w,  #facybox .e, #facybox  .nw, #facybox  .ne, #facybox  .sw, #facybox  .se{
 	width: 13px;
 	height: 18px;
@@ -55,11 +46,11 @@
 }
 
 #facybox .next {
-  background:url(images/facybox/next.png);
+  background:url(images/fancy_right.png);
 }
 
 #facybox .prev {
-  background:url(images/facybox/prev.png);
+  background:url(fancy_left.png);
 }
 
 #facybox .close {
@@ -86,9 +77,9 @@
 
 #facybox .loading {
   margin: 0 auto;
-  width: 32px;
-  height: 32px;
-  background: url('/images/facybox/loading.gif') no-repeat;
+  width: 16px;
+  height: 11px;
+  background: url('images/loading.gif') no-repeat;
   text-align: center;
 }
 

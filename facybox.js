@@ -67,7 +67,7 @@
  *   $(document).bind('reveal.facybox', function() { ...stuff to do after the facybox and contents are revealed... })
  *
  */
-;(function($) {
+(function($) {
   //TODO refactor using data.content_klass
   $.facybox = function(data, klass) {
     $.facybox.loading();
@@ -84,13 +84,14 @@
    * Public, $.facybox methods
    */
 
-	;$.extend($.facybox, {
-		settings: {
-		opacity      : 0.3,
-		overlay      : true,
-		modal        : false,
-		imageTypes   : [ 'png', 'jpg', 'jpeg', 'gif' ]
-	},
+  $.extend($.facybox, {
+    //possible option: noAutoload --- will build facybox only when it is needed
+    settings: {
+      opacity      : 0.3,
+      overlay      : true,
+      modal        : false,
+      imageTypes   : [ 'png', 'jpg', 'jpeg', 'gif' ]
+    },
 
     html : function(){
       return '\
@@ -122,7 +123,7 @@
 
     loading: function(){
       init();
-      if($('.facyLoading',$('#facybox'))[0]) return ;//already in loading state...
+      if($('.loading',$('#facybox'))[0]) return;//already in loading state...
       showOverlay();
       $.facybox.wait();
       if (!$.facybox.settings.modal) {
@@ -133,16 +134,14 @@
       $(document).trigger('loading.facybox');
     },
 
-	wait: function(){
-		var $f = $('#facybox');
-		
-		$f.append('<div class="facyLoading"></div>').fadeIn('fast', function(){
-			$('.content',$f).empty();//clear out old content
-			$('.body',$f).children().hide().end();
-			$f.fadeIn('fast');
-			$(document).trigger('reveal.facybox').trigger('afterReveal.facybox');
-		});
-	},
+    wait: function(){
+      var $f = $('#facybox');
+      $('.content',$f).empty();//clear out old content
+      $('.body',$f).children().hide().end().append('<div class="loading"></div>');
+      $f.fadeIn('fast');
+	  $.facybox.centralize();
+      $(document).trigger('reveal.facybox').trigger('afterReveal.facybox');
+    },
 
     centralize: function(){
       $('#facybox').css({
@@ -151,26 +150,33 @@
       });
     },
 
-	reveal: function(content){
-		$(document).trigger('beforeReveal.facybox');
-		
-		var $f = $('#facybox');
-		
-		var pos = $.facybox.getViewport();
-
-		$('.content',$f)
-			.attr('class',($.facybox.content_klass||'')+' content')//do not simply add the new class, since on the next call the old classes would remain
-			.html(content);
-		$('.facyLoading',$f).remove();
-
-		$('.body',$f).children().fadeIn('fast');
-		// $f.css('left', $(window).width() / 2 - ($('#facybox table').width() / 2));
-		$(document).trigger('reveal.facybox').trigger('afterReveal.facybox');
-	},
-	
 	getViewport: function() {
 		return [$(window).width(), $(window).height(), $(document).scrollLeft(), $(document).scrollTop() ];
 	},
+
+    reveal: function(content){
+	$(document).trigger('beforeReveal.facybox');
+	var $f = $('#facybox');
+	$('.content',$f)
+		.attr('class',($.facybox.content_klass||'')+' content') //do not simply add the new class, since on the next call the old classes would remain
+		.html(content);
+	$('.loading',$f).remove();
+	$('.body',$f).children().fadeIn('fast');
+	// 
+	
+	var pos = $.facybox.getViewport();
+	var wl = parseInt(pos[0]/2) - parseInt($f.find("table").width() / 2);
+	var wt = parseInt(pos[1]/2) - parseInt($f.find("table").height() / 2);
+	
+	if(pos[1] < $f.height()){
+		wt = 40;
+	}
+	
+	$f.css('left', wl);
+
+
+	$(document).trigger('reveal.facybox').trigger('afterReveal.facybox');
+    },
 
     close: function(){
       $(document).trigger('close.facybox');
@@ -224,11 +230,10 @@
   //preloads all the static facybox images
   function preloadImages(){
     //TODO preload prev/next ?
-	$('#facybox').find('.n, .s, .nw, .ne, .sw, .se, .w, .e, .loading, .close').each(function() {
-		var img = new Image();
-		img.src = $(this).css('background-image').replace(/url\((.+)\)/, '$1');
-	})
-
+    $('#facybox').find('.b:first, .loading, .close , .bl, .br, .tl, .tr').each(function() {
+      var img = new Image();
+      img.src = $(this).css('background-image').replace(/url\((.+)\)/, '$1');
+    })
   }
 
   function makeBackwardsCompatible() {
@@ -310,7 +315,7 @@
 
     $('#facybox_overlay').hide().addClass("facybox_overlayBG")
       .css('opacity', $.facybox.settings.opacity)
-      .fadeIn(100);
+      .fadeIn(200);
     if(!$.facybox.settings.modal){
       $('#facybox_overlay').click(function(){ $(document).trigger('close.facybox')})
     }

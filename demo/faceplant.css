@@ -25,8 +25,8 @@ p {
 }
 
 ul li {
-  list-style: none;
-  display: inline;
+	list-style-type: square;
+	margin: 0 0 0 15px;
 }
 
 li {
