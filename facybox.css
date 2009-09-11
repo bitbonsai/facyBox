@@ -1,0 +1,162 @@
+#facybox {
+	position: absolute;
+	top: 0;
+	left: 0;
+	z-index: 100;
+	text-align: left;
+	padding: 18px;
+	min-width: 40px;
+	min-height: 40px;
+}
+.facyLoading{
+	height: 40px;
+	width: 40px;
+	cursor: pointer;
+	display: none;
+	background: #f00 url('images/fancy_progress.png') no-repeat;
+	z-index: 100;
+	position: absolute;
+}
+
+#facybox .n, #facybox  .s,  #facybox .w,  #facybox .e, #facybox  .nw, #facybox  .ne, #facybox  .sw, #facybox  .se{
+	width: 13px;
+	height: 18px;
+}
+#facybox .n {
+	background: url('images/fancy_shadow_n.png');
+}               
+
+#facybox .s {  
+	background: url('images/fancy_shadow_s.png');
+}
+
+#facybox .w {  
+	background: url('images/fancy_shadow_w.png');
+}
+
+#facybox .e {  
+	background: url('images/fancy_shadow_e.png');
+}
+
+#facybox .nw {  
+	background: url('images/fancy_shadow_nw.png');
+}               
+                
+#facybox .ne {  
+	background: url('images/fancy_shadow_ne.png');
+}               
+                
+#facybox .sw {  
+	background: url('images/fancy_shadow_sw.png');
+}               
+                
+#facybox .se {  
+	background: url('images/fancy_shadow_se.png');
+}
+
+#facybox .next {
+  background:url(images/facybox/next.png);
+}
+
+#facybox .prev {
+  background:url(images/facybox/prev.png);
+}
+
+#facybox .close {
+	background: url('images/fancy_closebox.png') no-repeat;
+	position: absolute;
+	top: 5px;
+	right: 0;
+	display: block;
+	width: 30px;
+	height: 30px;
+}
+
+#facybox .prev, #facybox .next{
+  display:block;
+  float:left;
+  width: 20px;
+  height: 22px;
+}
+
+#facybox .navigation .counter{
+  float: left;
+  padding: 3px 5px;
+}
+
+#facybox .loading {
+  margin: 0 auto;
+  width: 32px;
+  height: 32px;
+  background: url('/images/facybox/loading.gif') no-repeat;
+  text-align: center;
+}
+
+#facybox .popup {
+  position: relative;
+}
+
+#facybox table {
+  border-collapse: collapse;
+}
+
+#facybox td {
+  border-bottom: 0;
+  padding: 0;
+}
+
+#facybox .body {
+  padding: 10px;
+  background: #fff;
+  width: auto;
+}
+
+#facybox .loading {
+  text-align: center;
+}
+
+#facybox .image {
+  text-align: center;
+}
+
+#facybox img {
+  border: 0;
+  margin: 0;
+}
+
+#facybox .footer {
+
+}
+
+#facybox .footer img {
+  vertical-align: middle;
+}
+
+#facybox .tl, #facybox .tr, #facybox .bl, #facybox .br {
+  height: 10px;
+  width: 10px;
+  overflow: hidden;
+  padding: 0;
+}
+
+#facybox_overlay {
+	position: fixed;
+	top: 0px;
+	left: 0px;
+	height: 100%;
+	width: 100%;
+}
+
+.facybox_hide {
+  z-index:-100;
+}
+
+.facybox_overlayBG {
+  background-color: #000;
+  z-index: 99;
+}
+
+* html #facybox_overlay { /* ie6 hack */
+  position: absolute;
+  height: expression(document.body.scrollHeight > document.body.offsetHeight ? document.body.scrollHeight : document.body.offsetHeight + 'px');
+}
