@@ -1,14 +1,14 @@
 /*
  * facybox (for jQuery)
- * version: 1.2 (05/05/2008)
+ * version: 1.0 (11/09/2009)
  * @requires jQuery v1.2 or later
  *
- * Examples at http://famspam.com/facybox/
+ * Examples at http://bitbonsai.com/facybox/
  *
  * Licensed under the MIT:
  *   http://www.opensource.org/licenses/mit-license.php
  *
- * Copyright 2007, 2008 Chris Wanstrath [ chris@ozmm.org ]
+ * Copyright 2009 Mauricio Wolff [ chris@ozmm.org ]
  *
  * Usage:
  *
