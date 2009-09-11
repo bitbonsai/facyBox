@@ -39,4 +39,5 @@ Author
 ======
 Original: [defunkt](http://defunkt.github.com/)  
 Enhancements: [Michael Grosser](http://pragmatig.wordpress.com)
+
 Fancybox port: [Mauricio Wolff](http://bitbonsai.com)
