@@ -9,40 +9,42 @@
 	min-width: 40px;
 	min-height: 40px;
 }
-#facybox .n, #facybox  .s,  #facybox .w,  #facybox .e, #facybox  .nw, #facybox  .ne, #facybox  .sw, #facybox  .se{
-	width: 13px;
-	height: 18px;
+#facybox .w,  #facybox .e, #facybox  .nw, #facybox  .ne, #facybox  .sw, #facybox  .se{
+	min-height: 18px;
+	min-width: 13px;
 }
 #facybox .n {
-	background: url('images/fancy_shadow_n.png');
+	background: url('images/fancy_shadow_n.png') repeat-x;
+	height: 18px;
 }               
 
 #facybox .s {  
-	background: url('images/fancy_shadow_s.png');
+	background: url('images/fancy_shadow_s.png') repeat-x;
+	height: 18px;
 }
 
 #facybox .w {  
-	background: url('images/fancy_shadow_w.png');
+	background: url('images/fancy_shadow_w.png') repeat-y;
 }
 
 #facybox .e {  
-	background: url('images/fancy_shadow_e.png');
+	background: url('images/fancy_shadow_e.png') repeat-y;
 }
 
 #facybox .nw {  
-	background: url('images/fancy_shadow_nw.png');
+	background: url('images/fancy_shadow_nw.png') no-repeat;
 }               
                 
 #facybox .ne {  
-	background: url('images/fancy_shadow_ne.png');
+	background: url('images/fancy_shadow_ne.png') no-repeat;
 }               
                 
 #facybox .sw {  
-	background: url('images/fancy_shadow_sw.png');
+	background: url('images/fancy_shadow_sw.png') no-repeat;
 }               
                 
 #facybox .se {  
-	background: url('images/fancy_shadow_se.png');
+	background: url('images/fancy_shadow_se.png') no-repeat;
 }
 
 #facybox .next {

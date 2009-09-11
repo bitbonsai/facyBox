@@ -162,7 +162,7 @@
 		.html(content);
 	$('.loading',$f).remove();
 	$('.body',$f).children().fadeIn('fast');
-	// 
+
 	
 	var pos = $.facybox.getViewport();
 	var wl = parseInt(pos[0]/2) - parseInt($f.find("table").width() / 2);
