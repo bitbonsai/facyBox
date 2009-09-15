@@ -87,10 +87,10 @@
   $.extend($.facybox, {
     //possible option: noAutoload --- will build facybox only when it is needed
     settings: {
-      opacity      : 0.3,
-      overlay      : true,
-      modal        : false,
-      imageTypes   : [ 'png', 'jpg', 'jpeg', 'gif' ]
+		opacity      : 0.3,
+		overlay      : true,
+		modal        : false,
+		imageTypes   : [ 'png', 'jpg', 'jpeg', 'gif' ]
     },
 
     html : function(){
@@ -105,6 +105,7 @@
 						<tr> \
 							<td class="w" /> \
 							<td class="body"> \
+							<div class="footer"> </div> \
 							<a href="#" class="close"></a>\
 							<div class="content"> \
 							</div> \
@@ -118,6 +119,7 @@
 				</table> \
 			</div> \
 		</div> \
+		<div class="loading"></div> \
 	'
     },
 
@@ -144,14 +146,26 @@
     },
 
     centralize: function(){
-      $('#facybox').css({
-        top:	$(window).scrollTop() + ($(window).height() / 10),
-        left: $(window).width() / 2 - ($('#facybox table').width() / 2)
-      });
+		
+		var $f = $('#facybox');
+		var pos = $.facybox.getViewport();
+		var wl = parseInt(pos[0]/2) - parseInt($f.find("table").width() / 2);
+		var fh = parseInt($f.height());
+
+		if(pos[1] > fh){
+			var t = (pos[3] + (pos[1] - fh)/2);
+			$f.css({ 'left': wl, 'top': t });
+			// console.log('height smaller then window: '+fh, pos[1], pos[3])
+		} else {
+			var t = (pos[3] + (pos[1] /10));
+			$f.css({ 'left': wl, 'top': t });
+			// console.log('height bigger then window')
+		}
     },
 
 	getViewport: function() {
-		return [$(window).width(), $(window).height(), $(document).scrollLeft(), $(document).scrollTop() ];
+		//  [1009, 426, 0, 704]
+		return [$(window).width(), $(window).height(), $(window).scrollLeft(), $(window).scrollTop()];
 	},
 
     reveal: function(content){
@@ -161,19 +175,12 @@
 		.attr('class',($.facybox.content_klass||'')+' content') //do not simply add the new class, since on the next call the old classes would remain
 		.html(content);
 	$('.loading',$f).remove();
-	$('.body',$f).children().fadeIn('fast');
+	
+	var $body 	= $('.body',$f);
 
+	$body.children().fadeIn('fast');
 	
-	var pos = $.facybox.getViewport();
-	var wl = parseInt(pos[0]/2) - parseInt($f.find("table").width() / 2);
-	var wt = parseInt(pos[1]/2) - parseInt($f.find("table").height() / 2);
-	
-	if(pos[1] < $f.height()){
-		wt = 40;
-	}
-	
-	$f.css('left', wl);
-
+	$.facybox.centralize();
 
 	$(document).trigger('reveal.facybox').trigger('afterReveal.facybox');
     },
@@ -223,17 +230,21 @@
     $('body').append($.facybox.html());//insert facybox to dom
 
     //if we did not autoload, so the user has just clicked the facybox and pre-loading is useless
-    if(! $.facybox.settings.noAutoload)preloadImages();
-    $('#facybox .close').click($.facybox.close);
+    if(! $.facybox.settings.noAutoload){
+		preloadImages();
+	}
+        $('#facybox .close').click($.facybox.close);
   }
 
   //preloads all the static facybox images
   function preloadImages(){
     //TODO preload prev/next ?
-    $('#facybox').find('.b:first, .loading, .close , .bl, .br, .tl, .tr').each(function() {
-      var img = new Image();
-      img.src = $(this).css('background-image').replace(/url\((.+)\)/, '$1');
+    $('#facybox').find('.n, .close , .s, .w, .e, .nw, ne, sw, se').each(function() {
+		var img = new Image();
+		img.src = $(this).css('background-image').replace(/url\((.+)\)/, '$1');
     })
+	var img = new Image();
+	img.src = 'images/loading.gif';
   }
 
   function makeBackwardsCompatible() {
@@ -263,18 +274,23 @@
 
   function revealGallery(hrefs, initial) {
     //initial position
-    var position=$.inArray(initial||0,hrefs);
-    if(position==-1)position=0;
+    var position = $.inArray(initial||0,hrefs);
+    if(position ==-1){
+		position = 0;
+	}
 
     //build navigation and ensure it will be removed
-    $('#facybox div.footer').append($('<div class="navigation"><a class="prev"/><div class="counter"></div><a class="next"/></div>'));
+	var $footer  = $('#facybox div.footer');
+	
+    $footer.append($('<div class="navigation"><a class="prev"/><a class="next"/><div class="counter"></div></div>'));
     var $nav = $('#facybox .navigation');
+
     $(document).bind('afterClose.facybox',function(){$nav.remove()});
 
     function change_image(diff){
       position = (position + diff + hrefs.length) % hrefs.length;
       revealImage(hrefs[position]);
-      $nav.find('.counter').html(position+1+" / "+hrefs.length);
+      $nav.find('.counter').html(position +1+" / "+hrefs.length);
     }
     change_image(0);
 
@@ -288,11 +304,30 @@
   }
 
   function revealImage(href){
+	
+	var $f = $("#facybox");
+	
     $('#facybox .content').empty();
     $.facybox.loading();//TODO loading must be shown until image is loaded -> stopLoading() on onload
     var image = new Image();
     image.onload = function() {
-      $.facybox.reveal('<div class="image"><img src="' + image.src + '" /></div>', $.facybox.content_klass)
+		$.facybox.reveal('<div class="image"><img src="' + image.src + '" /></div>', $.facybox.content_klass);
+		
+		var $footer  	= $("div.footer",$f);
+		var $content 	= $("div.content",$f);
+		var $navigation	= $("div.navigation",$f);
+		var $next		= $("a.next",$f);
+		var $prev		= $("a.prev",$f);
+		var $counter	= $("div.counter",$f);
+		
+		var size = [$content.width(), $content.height()];
+		
+		$footer.width(size[0]).height(size[1]);
+		$navigation.width(size[0]).height(size[1]);
+		$next.width(parseInt(size[0]/2)).height(size[1]).css({ left: (size[0]/2) });
+		$prev.width(size[0]/2).height(size[1]);
+		$counter.width(parseInt($f.width() -26)).css({'opacity' : 0.5, '-moz-border-radius' : '8px', '-webkit-border-radius' : '8px'})
+		
     }
     image.src = href;
   }

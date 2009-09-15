@@ -96,11 +96,13 @@ textarea {
 }
 
 .code {
-  background: #F7F7F7;
-  border-top: 1px solid #EBEBEB;
-  border-bottom: 1px solid #EBEBEB;
-  padding: 10px;
-overflow: auto;
+	background: #e6e6e6;
+	border-top: 1px solid #EBEBEB;
+	border-bottom: 1px solid #EBEBEB;
+	padding: 10px;
+	overflow: auto;
+	white-space: nowrap;
+	font-size: 11px;
 }
 
 .code h3 {
@@ -108,9 +110,14 @@ overflow: auto;
 }
 
 .code code {
-  margin: 10px 0;
-  display: block;
+	margin: 10px 0;
+	display: block;
+	font-family: Monaco, 'courier-new', monospace;
 }
+.code pre{
+	font-family: Monaco, 'courier-new', monospace;
+}
+
 
 #screenshots a {
   border: none;

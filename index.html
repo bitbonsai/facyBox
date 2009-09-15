@@ -14,9 +14,12 @@
   <script type="text/javascript">
     jQuery(document).ready(function($) {
       $('a[rel*=facybox]').facybox({
-        noAutoload: true
-      }) 
-    })
+        // noAutoload: true
+      }); 
+      
+        jQuery.facybox({images:['demo/stairs.jpg','demo/logo-facybox.png']});
+      
+    });
   </script>
 </head>
 
@@ -68,7 +71,7 @@
             <ul>
                 <li><a href="http://github.com/defunkt/facebox">http://github.com/defunkt/facebox</a> &mdash; Original Facebox </li>
                 <li><a href="http://fancybox.net/">http://fancybox.net/</a> &mdash; Original Fancybox</li>
-                <li><a href="http://github.com/mwolff/facyBox/" title="mwolff's facyBox - GitHub">http://github.com/mwolff/facyBox/</a> &mdash; mWolff fancyBox</li>
+                <li><a href="http://github.com/mwolff/facyBox/" title="mwolff's facyBox - GitHub">http://github.com/mwolff/facyBox/</a> &mdash; mWolff facyBox</li>
             </ul>
           </p>
         </div>
@@ -83,11 +86,13 @@
         <div class="example">
           <h2>Images</h2>
 
-          <p> <a href="demo/stairs.jpg" rel="facybox">View 'demo/stairs.jpg' in the facybox</a> </p>
+          <p> <a href="http://th03.deviantart.net/fs39/300W/i/2008/350/4/9/escalator_by_mickeyxmouse.jpg" rel="facybox">View escalator_by_mickeyxmouse.jpg</a> (from <a href="http://mickeyxmouse.deviantart.com/art/escalator-106463182">Deviantart</a>) in the facybox </p>
 
           <div class="code">
             <h3>The Code</h3>
-            <code>&lt;a href="demo/stairs.jpg" rel="facybox"&gt;text&lt;/a&gt;</code>
+            <code>
+                &lt;a href=&quot;http://th..yxmouse.jpg&quot; rel=&quot;facybox&quot;&gt;View escalator_by_mickeyxmouse.jpg&lt;/a&gt;
+            </code>
           </div>
         </div>
 
@@ -95,9 +100,8 @@
           <h2>Galleries</h2>
 
           <p>
-            <strike><a id="open_gallery">open gallery</a>
-            you can navigate by left-arrow/right-arrow too</strike>
-            Still have to work on galleries... nuff js for one day of work...  :)
+            <a style="cursor: pointer" id="open_gallery">open gallery</a>
+            you can navigate by left-arrow/right-arrow too
           </p>
           <script>
             jQuery('#open_gallery').click(function(){
@@ -122,7 +126,7 @@ jQuery('#open_gallery').click(function(){
 
           <div class="code">
             <h3>The Code</h3>
-            <code>&lt;a href="#info" rel="facybox"&gt;text&lt;/a&gt;</code>
+            <code>&lt;a href="#info" rel="facybox"&gt;View the 'info' div in the facybox&lt;/a&gt;</code>
           </div>
         </div>
 
@@ -134,7 +138,7 @@ jQuery('#open_gallery').click(function(){
 
           <div class="code">
             <h3>The Code</h3>
-            <code>&lt;a href="demo/remote.html" rel="facybox"&gt;text&lt;/a&gt;</code>
+            <code>&lt;a href="demo/remote.html" rel="facybox"&gt;View 'remote.html' in the facybox&lt;/a&gt;</code>
           </div>
         </div>
 
@@ -175,8 +179,7 @@ jQuery('#open_gallery').click(function(){
           </p>
           <p>
             Maybe your <i>Terms and Conditions</i> can be loaded standalone or via facybox.  When loaded in facybox, 
-            you might want to tweak some styles -- like making the <code>h1</code> positioned absolutely?  
-            We do this on FamSpam.
+            you might want to tweak some styles -- like making the <code>h1</code> positioned absolutely?
           </p>
           <p>
             <a href="demo/remote.html" rel="facybox.bolder">
@@ -239,15 +242,13 @@ jQuery('#open_gallery').click(function(){
         </div>
 
         <div class="example">
-          <h2>Screenshots</h2>
-          <p>
-            See it in action on <a href="http://famspam.com">FamSpam</a>!
-          </p>
+          <h2>Some extra demos</h2>
+          <p>Some cool pictures of Deviant:</p>
           <div id="screenshots">
-            <a href="screenshots/photo.jpg" rel="facybox"><img src="screenshots/photo_small.png"></a>
-            <a href="screenshots/error.jpg" rel="facybox"><img src="screenshots/error_small.png"></a>
-            <a href="screenshots/success.jpg" rel="facybox"><img src="screenshots/success_small.png"></a>
-            <a href="screenshots/preview.jpg" rel="facybox"><img src="screenshots/preview_small.png"></a>
+            <a href="http://th05.deviantart.net/fs50/300W/f/2009/257/9/5/Alice_cards_by_Sugarock99.jpg" rel="facybox"><img src="http://th05.deviantart.net/fs50/150/f/2009/257/9/5/Alice_cards_by_Sugarock99.jpg"></a>
+            <a href="http://th01.deviantart.net/fs50/300W/f/2009/257/7/f/Vintage_by_ValentinaKallias.jpg" rel="facybox"><img src="http://th01.deviantart.net/fs50/150/f/2009/257/7/f/Vintage_by_ValentinaKallias.jpg"></a>
+            <a href="http://th07.deviantart.net/fs51/300W/f/2009/257/c/0/c0a43b00118655bd2804bc931589a47f.jpg" rel="facybox"><img src="http://th07.deviantart.net/fs51/150/f/2009/257/c/0/c0a43b00118655bd2804bc931589a47f.jpg"></a>
+            <a href="http://th03.deviantart.net/fs50/300W/f/2009/257/d/6/Lost_room_by_fogke.jpg" rel="facybox"><img src="http://th03.deviantart.net/fs50/150/f/2009/257/d/6/Lost_room_by_fogke.jpg"></a>
           </div>
         </div>
 
@@ -256,7 +257,7 @@ jQuery('#open_gallery').click(function(){
           <p> 
             Thanks to Facebook for the idea and style.  Thanks to Mindy Tchieu for her help in getting this working.
           </p>
-          <p> <strong>from mWolff:</strong> Thanks to defunkt for facebox and janis.skarnelis for Fancybox.</p>
+          <p> <strong>from mWolff:</strong> Thanks to defunkt for Facebox and janis.skarnelis for Fancybox.</p>
           <p>
             Comments, concerns, complaints, criticisms, confessions?  Email me: <script type="text/javascript">document.write(
 "<n uers=\"znvygb:z\100ovgobafnv\056pbz\">z\100ovgobafnv\056pbz<\057n>".replace(/[a-zA-Z]/g, function(c){return String.fromCharCode((c<="Z"?90:122)>=(c=c.charCodeAt(0)+13)?c:c-26);}));

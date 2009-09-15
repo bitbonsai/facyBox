@@ -47,12 +47,18 @@
 	background: url('images/fancy_shadow_se.png') no-repeat;
 }
 
-#facybox .next {
-  background:url(images/fancy_right.png);
+#facybox a.next {
+  background: url(images/fancy_right.png) no-repeat 9999px 50%;
 }
 
-#facybox .prev {
-  background:url(fancy_left.png);
+#facybox a.prev {
+  background: url(images/fancy_left.png) no-repeat -9999px 50%;;
+}
+#facybox a.prev:hover{
+	background-position: 0 50%;
+}
+#facybox a.next:hover{
+	background-position: 100% 50%;
 }
 
 #facybox .close {
@@ -65,22 +71,28 @@
 	height: 30px;
 }
 
-#facybox .prev, #facybox .next{
-  display:block;
-  float:left;
-  width: 20px;
-  height: 22px;
+#facybox .prev,
+#facybox .next{
+	display: block;
+	position: absolute;
+	cursor: pointer;
 }
 
 #facybox .navigation .counter{
-  float: left;
-  padding: 3px 5px;
+	background: #000;
+	color: #fff;
+	text-align: center;
+	position: absolute;
+	bottom: -33px;
+	left: -10px;
+	padding: 2px 0;
+	font-size: 11px;
 }
 
 #facybox .loading {
   margin: 0 auto;
-  width: 16px;
-  height: 11px;
+  width: 22px;
+  height: 22px;
   background: url('images/loading.gif') no-repeat;
   text-align: center;
 }
@@ -110,6 +122,7 @@
 
 #facybox .image {
   text-align: center;
+  line-height: 0;
 }
 
 #facybox img {
@@ -118,7 +131,11 @@
 }
 
 #facybox .footer {
-
+	position: absolute;
+	top: 28px;
+	left: 23px;
+	padding: 0;
+	width: 90%;
 }
 
 #facybox .footer img {
