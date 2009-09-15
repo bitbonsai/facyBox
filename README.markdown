@@ -3,6 +3,12 @@ facybox
 Demo: [facybox homepage](http://bitbonsai.com/facybox/) or open index.html.  
 Need help?  Join the [Original Facebox Google Groups mailing list](http://groups.google.com/group/facebox/)
 
+Benefits added by mWolff
+=============================
+ - Caption below picture for Galleries
+ - New loading image
+ - If Content is smaller then Browser's Height, centralize vertically
+
 Benefits compared to original
 =============================
  - Faster page load (does the heavy lifting when a facybox is opened and not at startup)
@@ -33,11 +39,10 @@ TODO
 ====
  - add modal mode demo
  - show loading during whole Ajax/Images load
- - galleries not working
 
 Author
 ======
 Original: [defunkt](http://defunkt.github.com/)  
 Enhancements: [Michael Grosser](http://pragmatig.wordpress.com)
 
-Fancybox port: [Mauricio Wolff](http://bitbonsai.com)
+Facybox port: [Mauricio Wolff](http://bitbonsai.com)
