@@ -8,6 +8,7 @@ Benefits added by mWolff
  - Caption below picture for Galleries
  - New loading image
  - If Content is smaller then Browser's Height, centralize vertically
+ - Improved msie support
 
 Benefits compared to original
 =============================
