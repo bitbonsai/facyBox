@@ -16,15 +16,15 @@ Benefits compared to original
  - Locally testable (does not require you to host a server just to try locally)
  - Gallery mode available
  - Useable as modal dialog (additional mode that does not allow users to dismiss the box)
- - Clean seperation between JS/CSS (no images/styles inside JS)
- - Seperate centralize method to re-center the facybox externally
+ - Clean separation between JS/CSS (no images/styles inside JS)
+ - Separate centralize method to re-center the facybox externally
  - No need to edit CSS (paths are set to images/facybox instead of /facybox)
  - afterClose event is fired
 
 
 Installation
 ============
-Download and unpack (use download button above), images go into /images/facybox , if not you can overwrite them in css.
+Download and unpack (use download button above). Images go into /images/facybox or you can overwrite them in facybox_urls.css.
 
 Options
 =======

@@ -1,7 +1,6 @@
 /*
  * facybox (for jQuery)
  * version: 1.0 (11/09/2009)
- * version: 1.1 (14/09/2009)
  * @requires jQuery v1.2 or later
  *
  * Examples at http://bitbonsai.com/facybox/

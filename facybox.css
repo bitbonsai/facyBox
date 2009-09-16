@@ -1,3 +1,5 @@
+@import "./facybox_urls.css";
+
 #facybox {
 	position: absolute;
 	top: 0;
@@ -9,50 +11,31 @@
 	min-width: 40px;
 	min-height: 40px;
 }
-#facybox .w,  #facybox .e, #facybox  .nw, #facybox  .ne, #facybox  .sw, #facybox  .se{
+#facybox .w,  #facybox .e, #facybox  .nw,
+#facybox .ne, #facybox .sw, #facybox .se {
 	min-height: 18px;
 	min-width: 13px;
 }
-#facybox .n {
-	background: url('images/fancy_shadow_n.png') repeat-x;
-	height: 18px;
-}               
-
-#facybox .s {  
-	background: url('images/fancy_shadow_s.png') repeat-x;
+#facybox .n, #facybox .s {
+	background-repeat: repeat-x;
 	height: 18px;
 }
-
-#facybox .w {  
-	background: url('images/fancy_shadow_w.png') repeat-y;
+#facybox .w, #facybox .e {
+	background-repeat: repeat-y;
 }
 
-#facybox .e {  
-	background: url('images/fancy_shadow_e.png') repeat-y;
-}
-
-#facybox .nw {  
-	background: url('images/fancy_shadow_nw.png') no-repeat;
-}               
-                
-#facybox .ne {  
-	background: url('images/fancy_shadow_ne.png') no-repeat;
-}               
-                
-#facybox .sw {  
-	background: url('images/fancy_shadow_sw.png') no-repeat;
-}               
-                
-#facybox .se {  
-	background: url('images/fancy_shadow_se.png') no-repeat;
+#facybox .nw, #facybox .ne, #facybox .sw, #facybox .se,
+#facybox a.next, #facybox a.prev,
+#facybox .closek #facybox .loading {
+	background-repeat: no-repeat;
 }
 
 #facybox a.next {
-  background: url(images/fancy_right.png) no-repeat 9999px 50%;
+  background-position: 9999px 50%;
 }
 
 #facybox a.prev {
-  background: url(images/fancy_left.png) no-repeat -9999px 50%;;
+  background-position: -9999px 50%;
 }
 #facybox a.prev:hover{
 	background-position: 0 50%;
@@ -62,7 +45,6 @@
 }
 
 #facybox .close {
-	background: url('images/fancy_closebox.png') no-repeat;
 	position: absolute;
 	top: 5px;
 	right: 0;
@@ -93,7 +75,6 @@
   margin: 0 auto;
   width: 22px;
   height: 22px;
-  background: url('images/loading.gif') no-repeat;
   text-align: center;
 }
 
