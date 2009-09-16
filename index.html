@@ -4,7 +4,7 @@
 <html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
 <head>
   <meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
-  <title>facybox 1.1</title>
+  <title>facybox 1.2</title>
   <link href="facybox.css" media="screen" rel="stylesheet" type="text/css" />
   <link href="demo/faceplant.css" media="screen" rel="stylesheet" type="text/css" />
   
@@ -26,6 +26,24 @@
       <div id="content">
         <div id="logo">
         <img src="demo/logo-facybox.png" width="264" height="90" alt="facyBox" >
+        </div>
+        
+        <div class="example news">
+            <h2>Changelog</h2>
+            <ul>
+                <li>1.2 - Added support for Internet Explorer
+                    <ul>
+                        <li>transparent pngs</li>
+                        <li>overlay css fix</li>
+                        <li>faster facybox.close</li>
+                        <li>fixed .w and .e width</li>
+                    </ul>
+                </li>
+                <li>1.2 - $.fn.fixPNG added to jQuery, you can use in other pngs with: <em>$(".yourclass").fixPNG()</em></li>
+                <li>1.1 - Stripped img urls from <em>facybox.css</em> to <em>facybox_urls.css</em> (the last is imported)</li>
+                <li>1.1 - Image gallery</li>
+                <li>1.1 - Facybox centralizes vertically if content height is smaller then window height</li>
+            </ul>
         </div>
 
         <div class="example">
@@ -142,7 +160,7 @@ jQuery('#open_gallery').click(function(){
         <div class="example">
           <h2>Load Dependencies</h2>
 
-          <p>Make sure jQuery is loaded before facybox.</p>
+          <p>Make sure jQuery is loaded <strong>before</strong> facybox.</p>
 
           <div class="code">
             <code style="white-space: nowrap">
@@ -152,6 +170,7 @@ jQuery('#open_gallery').click(function(){
                 &lt;script src="facybox.js" type="text/javascript"&gt;&lt;/script&gt;
             </code>
           </div>
+          <p><strong>Important:</strong> You don't need to reference <em>facybox_urls.css</em>, but the file must be at the same place as <em>facybox.css</em></p>
         </div>
 
         <div class="example">
