@@ -67,7 +67,26 @@
  *   $(document).bind('reveal.facybox', function() { ...stuff to do after the facybox and contents are revealed... })
  *
  */
-(function($) {
+;(function($) {
+	
+	$.fn.fixPNG = function() {
+		return this.each(function () {
+			var image = $(this).css('backgroundImage');
+
+			if (image.match(/^url\(["']?(.*\.png)["']?\)$/i)) {
+				image = RegExp.$1;
+				$(this).css({
+					'backgroundImage': 'none',
+					'filter': "progid:DXImageTransform.Microsoft.AlphaImageLoader(enabled=true, sizingMethod=" + ($(this).css('backgroundRepeat') == 'no-repeat' ? 'crop' : 'scale') + ", src='" + image + "')"
+				}).each(function () {
+					var position = $(this).css('position');
+					if (position != 'absolute' && position != 'relative')
+						$(this).css('position', 'relative');
+				});
+			}
+		});
+	};
+	
   //TODO refactor using data.content_klass
   $.facybox = function(data, klass) {
     $.facybox.loading();
@@ -229,6 +248,28 @@
 
     $('body').append($.facybox.html());//insert facybox to dom
 
+
+	// ie hacks
+	var $f = $("#facybox");
+	
+	// it amazes me that this is still better than native png32 support in ie8...
+	if($.browser.msie){
+		$(".n, .s, .w, .e, .nw, .ne, .sw, .se", $f).fixPNG();
+		// ie6
+		if(parseInt($.browser.version) <= 6){
+			var css = "<style type='text/css' media='screen'>* html #facybox_overlay { position: absolute; height: expression(document.body.scrollHeight > document.body.offsetHeight ? document.body.scrollHeight : document.body.offsetHeight + 'px');}</style>"
+			$('head').append(css);
+			$(".close", $f).fixPNG();
+			$(".close",$f).css({
+				'right': '15px'
+			});
+		}
+		$(".w, .e",$f).css({
+			width: '13px',
+			'font-size': '0'
+		}).text("&nbsp;");
+	}
+
     //if we did not autoload, so the user has just clicked the facybox and pre-loading is useless
     if(! $.facybox.settings.noAutoload){
 		preloadImages();
@@ -372,11 +413,21 @@
 
   $(document).bind('close.facybox', function() {
     $(document).unbind('keydown.facybox');
-    $('#facybox').fadeOut(function() {
-      $('#facybox .content').removeClass().addClass('content');//revert changing class
-      hideOverlay();
-      $('#facybox .loading').remove();
-    })
+
+	// ie hacks
+	var $f = $("#facybox");
+	if($.browser.msie){
+		$('#facybox').hide();
+		hideOverlay();
+		$('#facybox .loading').remove();
+	} else {
+		$('#facybox').fadeOut('fast',function() {
+	      $('#facybox .content').removeClass().addClass('content');//revert changing class
+	      hideOverlay();
+	      $('#facybox .loading').remove();
+	    })
+	}
+
     $(document).trigger('afterClose.facybox');
   });
 
