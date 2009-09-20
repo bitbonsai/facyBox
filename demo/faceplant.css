@@ -67,9 +67,6 @@ textarea {
 }
 
 #content {
-  border-color: #333 #B7B7B7 rgb(59, 89, 152);
-  border-style: none solid solid;
-  border-width: medium 1px 1px;
   margin: -2px 1px 0px -1px;
   padding: 20px;
 }
@@ -153,4 +150,31 @@ textarea {
 
 #footer p {
   margin: 0;
+}
+
+
+
+#donate{
+	background: #ffc url(../images/coffee_48x48.png) no-repeat center left;
+	display: block;
+	border: 1px solid #E5E2D7;
+	width: 200px;
+	height: 58px;
+	color: #605D5B;
+	font-size: 11px;
+	padding: 5px 10px 5px 35px;
+	margin: 40px 40px 0 0;
+	text-decoration: none;
+	cursor: pointer;
+	
+	position: absolute;
+	right: 40px;
+	
+	-moz-border-radius: 6px;
+	-webkit-border-radius: 6px;
+}
+#donate:hover{
+	background-color: #45464B;
+	border-color: #0f0;
+	color: #fff;
 }
