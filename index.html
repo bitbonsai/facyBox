@@ -16,6 +16,11 @@
       $('a[rel*=facybox]').facybox({
         // noAutoload: true
       });
+      
+      $("h2",$("#changelog")).css("cursor","pointer").click(function(){
+          $(this).next().slideToggle('fast');
+      }).trigger("click");
+      
     });
   </script>
 </head>
@@ -41,7 +46,7 @@
         <img src="demo/logo-facybox.png" width="264" height="90" alt="facyBox" >
         </div>
         
-        <div class="example news">
+        <div class="example news" id="changelog">
             <h2>Changelog</h2>
             <ul>
                 <li>1.2 - Added support for Internet Explorer
@@ -96,7 +101,7 @@
 
           <p> 
             Want to live on the edge?
-            <ul>
+            <ul style="font-size: 0.8em">
                 <li><a href="http://github.com/defunkt/facebox">http://github.com/defunkt/facebox</a> &mdash; Original Facebox </li>
                 <li><a href="http://fancybox.net/">http://fancybox.net/</a> &mdash; Original Fancybox</li>
                 <li><a href="http://github.com/mwolff/facyBox/" title="mwolff's facyBox - GitHub">http://github.com/mwolff/facyBox/</a> &mdash; mWolff facyBox</li>
@@ -111,7 +116,7 @@
           <p> Need help?  Check out the <a href="http://wiki.github.com/mwolff/facybox">Wiki</a>.</p>
         </div>
 
-        <div class="example">
+        <div class="example news">
           <h2>Images</h2>
 
           <p> <a href="http://th03.deviantart.net/fs39/300W/i/2008/350/4/9/escalator_by_mickeyxmouse.jpg" rel="facybox">View escalator_by_mickeyxmouse.jpg</a> (from <a href="http://mickeyxmouse.deviantart.com/art/escalator-106463182">Deviantart</a>) in the facybox </p>
@@ -124,7 +129,7 @@
           </div>
         </div>
 
-        <div class="example">
+        <div class="example news">
           <h2>Galleries</h2>
 
           <p>
@@ -147,7 +152,7 @@ jQuery('#open_gallery').click(function(){
           </div>
         </div>
 
-        <div class="example">
+        <div class="example news">
           <h2>Divs</h2>
 
           <p> <a href="#info" rel="facybox">View the 'info' div in the facybox</a> </p>
@@ -158,7 +163,7 @@ jQuery('#open_gallery').click(function(){
           </div>
         </div>
 
-        <div class="example">
+        <div class="example news">
           <h2>Ajaxes</h2>
 
           <p> <a href="demo/remote.html" rel="facybox">View 'remote.html' in the facybox</a> </p>
@@ -200,7 +205,7 @@ jQuery('#open_gallery').click(function(){
           </div>
         </div>
 
-        <div class="example">
+        <div class="example news">
           <h2>Extra Classes</h2>
           <p> 
             You can give the facybox container an extra class (to fine-tune the display of reusable remote pages)
@@ -270,7 +275,7 @@ jQuery('#open_gallery').click(function(){
           </div>
         </div>
 
-        <div class="example">
+        <div class="example news">
           <h2>Some extra demos</h2>
           <p>Some cool pictures from Deviant.com:</p>
           <div id="screenshots">
