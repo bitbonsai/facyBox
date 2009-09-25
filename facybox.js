@@ -284,8 +284,12 @@
 		var img = new Image();
 		img.src = $(this).css('background-image').replace(/url\((.+)\)/, '$1');
     })
-	var img = new Image();
-	img.src = 'images/loading.gif';
+	// var img = new Image();
+	// img.src = 'images/loading.gif';
+        /*
+        TODO: use filament's group preloader
+        */
+       
   }
 
   function makeBackwardsCompatible() {
@@ -323,112 +327,4 @@
     //build navigation and ensure it will be removed
 	var $footer  = $('#facybox div.footer');
 	
-    $footer.append($('<div class="navigation"><a class="prev"/><a class="next"/><div class="counter"></div></div>'));
-    var $nav = $('#facybox .navigation');
-
-    $(document).bind('afterClose.facybox',function(){$nav.remove()});
-
-    function change_image(diff){
-      position = (position + diff + hrefs.length) % hrefs.length;
-      revealImage(hrefs[position]);
-      $nav.find('.counter').html(position +1+" / "+hrefs.length);
-    }
-    change_image(0);
-
-    //bind events
-    $('.prev',$nav).click(function(){change_image(-1)});
-    $('.next',$nav).click(function(){change_image(1)});
-    $(document).bind('keydown.facybox', function(e) {
-      if(e.keyCode == 39)change_image(1);  // right
-      if(e.keyCode == 37)change_image(-1); // left
-    });
-  }
-
-  function revealImage(href){
-	
-	var $f = $("#facybox");
-	
-    $('#facybox .content').empty();
-    $.facybox.loading();//TODO loading must be shown until image is loaded -> stopLoading() on onload
-    var image = new Image();
-    image.onload = function() {
-		$.facybox.reveal('<div class="image"><img src="' + image.src + '" /></div>', $.facybox.content_klass);
-		
-		var $footer  	= $("div.footer",$f);
-		var $content 	= $("div.content",$f);
-		var $navigation	= $("div.navigation",$f);
-		var $next		= $("a.next",$f);
-		var $prev		= $("a.prev",$f);
-		var $counter	= $("div.counter",$f);
-		
-		var size = [$content.width(), $content.height()];
-		
-		$footer.width(size[0]).height(size[1]);
-		$navigation.width(size[0]).height(size[1]);
-		$next.width(parseInt(size[0]/2)).height(size[1]).css({ left: (size[0]/2) });
-		$prev.width(size[0]/2).height(size[1]);
-		$counter.width(parseInt($f.width() -26)).css({'opacity' : 0.5, '-moz-border-radius' : '8px', '-webkit-border-radius' : '8px'})
-		
-    }
-    image.src = href;
-  }
-
-  //TODO loading until content arrives
-  function revealAjax(href) {
-    $.get(href, function(data) { $.facybox.reveal(data) });
-  }
-
-  function skipOverlay() {
-    return $.facybox.settings.overlay == false || $.facybox.settings.opacity === null
-  }
-
-  function showOverlay() {
-    if(skipOverlay()) return;
-
-    if($('#facybox_overlay').length == 0){
-      $("body").append('<div id="facybox_overlay" class="facybox_hide"></div>');
-    }
-
-    $('#facybox_overlay').hide().addClass("facybox_overlayBG")
-      .css('opacity', $.facybox.settings.opacity)
-      .fadeIn(200);
-    if(!$.facybox.settings.modal){
-      $('#facybox_overlay').click(function(){ $(document).trigger('close.facybox')})
-    }
-  }
-
-  function hideOverlay() {
-    if(skipOverlay()) return;
-
-    $('#facybox_overlay').fadeOut(200, function(){
-      $("#facybox_overlay").removeClass("facybox_overlayBG").
-        addClass("facybox_hide").
-        remove();
-    })
-  }
-
-  /*
-   * Bindings
-   */
-
-  $(document).bind('close.facybox', function() {
-    $(document).unbind('keydown.facybox');
-
-	// ie hacks
-	var $f = $("#facybox");
-	if($.browser.msie){
-		$('#facybox').hide();
-		hideOverlay();
-		$('#facybox .loading').remove();
-	} else {
-		$('#facybox').fadeOut('fast',function() {
-	      $('#facybox .content').removeClass().addClass('content');//revert changing class
-	      hideOverlay();
-	      $('#facybox .loading').remove();
-	    })
-	}
-
-    $(document).trigger('afterClose.facybox');
-  });
-
-})(jQuery);
+    %2
