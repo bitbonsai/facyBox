@@ -109,7 +109,8 @@
 		opacity      : 0.3,
 		overlay      : true,
 		modal        : false,
-		imageTypes   : [ 'png', 'jpg', 'jpeg', 'gif' ]
+		imageTypes   : [ 'png', 'jpg', 'jpeg', 'gif' ],
+		imageMimeTypes  : [ 'image/jpeg', 'image/png', 'image/gif' ]
     },
 
     html : function(){
@@ -376,9 +377,21 @@
     image.src = href;
   }
 
-  //TODO loading until content arrives
   function revealAjax(href) {
-    $.get(href, function(data) { $.facybox.reveal(data) });
+    // $.get(href, function(data) { $.facybox.reveal(data) });
+	$.ajax({
+	  type: "GET",
+	  url: href,
+	  complete: function(XMLHttpRequest, textStatus) {
+	    content_type = XMLHttpRequest.getResponseHeader("Content-Type");
+	    if ( jQuery.inArray(content_type, $.facybox.settings.imageMimeTypes) >= 0 ) {
+	      revealImage(href)
+	  $.facybox.centralize();
+	    } else {
+	      $.facybox.reveal( XMLHttpRequest.responseText );
+	    }
+	  }
+	});
   }
 
   function skipOverlay() {
