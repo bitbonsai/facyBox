@@ -146,7 +146,7 @@
             <code>
             <pre>
 jQuery('#open_gallery').click(function(){
-  jQuery.facybox({images:['demo/stairs.jpg','demo/logo.png']})
+  jQuery.facybox({images:['demo/logo-facybox.png','images/coffee_48x48.png']})
 });            </pre>
             </code>
           </div>
@@ -174,6 +174,49 @@ jQuery('#open_gallery').click(function(){
             <code>&lt;a href="demo/remote.html" rel="facybox"&gt;View 'remote.html' in the facybox&lt;/a&gt;</code>
           </div>
         </div>
+        
+        <div class="example news">
+          <h2>On Page Load, Programmatically</h2>
+          <p>You can load any arbitrary html, or any other content with a few lines of code:</p>
+          <div class="code">
+            <h3>The Code to load html</h3>
+            <code>
+                <pre>
+&lt;script type=&quot;text/javascript&quot;&gt;
+    $(function(){
+        $.facybox(&quot;&lt;h3&gt;This is a title&lt;/h3&gt;&lt;p&gt;and this is a text&lt;/p&gt;&quot;);
+    })
+&lt;/script&gt;
+              </pre>
+            </code>
+            <h3>To load a remote page:</h3>
+            <code>
+            <pre>
+&lt;script type=&quot;text/javascript&quot; charset=&quot;utf-8&quot;&gt;
+    $(function(){
+        $.ajax({
+            url: &quot;demo/remote.html&quot;,
+            success: function(data){
+                $.facybox(data);
+            }
+        });
+    })
+&lt;/script&gt;
+                </pre> 
+            </code>
+            
+            <h3>To load a gallery:</h3>
+            <code>
+            <pre>
+&lt;script type=&quot;text/javascript&quot; charset=&quot;utf-8&quot;&gt;
+    $(function(){
+        jQuery.facybox({images:[&#x27;demo/logo-facybox.png&#x27;,&#x27;http://th03.deviantart.net/fs50/300W/f/2009/257/d/6/Lost_room_by_fogke.jpg&#x27;]})
+    })
+&lt;/script&gt;
+            </pre> 
+            </code>
+          </div>
+        </div>
 
         <div class="example">
           <h2>Load Dependencies</h2>
@@ -182,7 +225,7 @@ jQuery('#open_gallery').click(function(){
 
           <div class="code">
             <code style="white-space: nowrap">
-                &lt;!-- This gets the lastest jQ 1.x from google, minified and gziped --&gt;<br />
+                &lt;!-- This gets the latest jQ 1.x from google, minified and gziped --&gt;<br />
                 &lt;script src=&quot;http://ajax.googleapis.com/ajax/libs/jquery/1/jquery.min.js&quot; type=&quot;text/javascript&quot;&gt;&lt;/script&gt;<br />
                 &lt;link href="facybox.css" media="screen" rel="stylesheet" type="text/css"/&gt;<br/>
                 &lt;script src="facybox.js" type="text/javascript"&gt;&lt;/script&gt;
@@ -194,7 +237,7 @@ jQuery('#open_gallery').click(function(){
         <div class="example">
           <h2>Attach It onLoad</h2>
 
-          <p>While calling <code>facybox()</code> on any anchor tag will do the trick, it's easier to give your facyboxy links a <code>rel="facybox"</code> and hit them all onLoad.</p>
+          <p>While calling <code>facybox()</code> on any anchor tag will do the trick, it's easier to give your facyboxed links a <code>rel="facybox"</code> and hit them all onLoad.</p>
 
           <div class="code">
             <code>
