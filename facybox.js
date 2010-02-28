@@ -282,14 +282,14 @@
   function preloadImages(){
     //TODO preload prev/next ?
     $('#facybox').find('.n, .close , .s, .w, .e, .nw, ne, sw, se').each(function() {
-		var img = new Image();
-		img.src = $(this).css('background-image').replace(/url\((.+)\)/, '$1');
-    })
-	// var img = new Image();
-	// img.src = 'images/loading.gif';
-	/*
-		TODO: remove and load preloader from filament group
-	*/
+      var img = new Image();
+      img.src = $(this).css('background-image').replace(/^url\(\"?/, "").replace(/\"?\)$/, "");
+    });
+    // var img = new Image();
+    // img.src = 'images/loading.gif';
+    /*
+      TODO: remove and load preloader from filament group
+    */
   }
 
   function makeBackwardsCompatible() {
