@@ -282,8 +282,10 @@
   function preloadImages(){
     //TODO preload prev/next ?
     $('#facybox').find('.n, .close , .s, .w, .e, .nw, ne, sw, se').each(function() {
-      var img = new Image();
-      img.src = $(this).css('background-image').replace(/^url\(\"?/, "").replace(/\"?\)$/, "");
+        backgroundImage = $(this).css('background-image');
+        if (backgroundImage === 'none') return;
+        var img = new Image();
+        img.src = backgroundImage.replace(/url\("?(.*?)"?\)/, '$1');
     });
     // var img = new Image();
     // img.src = 'images/loading.gif';
