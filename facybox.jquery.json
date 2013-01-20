@@ -1,0 +1,34 @@
+{
+  "name": "facybox",
+  "title": "jQuery facyBox",
+  "description": "facebok with fancybox styles. Supports ajax, images, gallery, html.",
+  "keywords": [
+    "lightbox",
+    "gallery",
+    "ajax"
+  ],
+  "version": "1.2.0",
+  "author": {
+    "name": "Mauricio Wolff"
+  },
+  "maintainers": [
+    {
+      "name": "Mauricio Wolff",
+      "email": "m@bitbonsai.com",
+      "url": "http://bitbonsai.com"
+    }
+  ],
+  "licenses": [
+    {
+      "type": "MIT",
+      "url": "https://www.github.com/bitbonsai/facyBox/master/MIT-LICENCE.txt"
+    }
+  ],
+  "bugs": "https://github.com/bitbonsai/facyBox/issues",
+  "homepage": "https://github.com/bitbonsai/facyBox",
+  "docs": "https://github.com/bitbonsai/facyBox",
+  "download": "https://github.com/bitbonsai/facyBox/facybox_basefiles.zip",
+  "dependencies": {
+    "jquery": ">=1.3"
+  }
+}
