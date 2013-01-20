@@ -27,7 +27,7 @@
   "bugs": "https://github.com/bitbonsai/facyBox/issues",
   "homepage": "https://github.com/bitbonsai/facyBox",
   "docs": "https://github.com/bitbonsai/facyBox",
-  "download": "https://github.com/bitbonsai/facyBox/facybox_basefiles.zip",
+  "download": "https://github.com/bitbonsai/facyBox/archive/master.zip",
   "dependencies": {
     "jquery": ">=1.3"
   }
