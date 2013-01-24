@@ -4,12 +4,12 @@
 <html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
 <head>
   <meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
-  <title>facybox 1.2.1</title>
+  <title>facybox 1.2.3</title>
   <link href="facybox.css" media="screen" rel="stylesheet" type="text/css" />
   <link href="demo/faceplant.css" media="screen" rel="stylesheet" type="text/css" />
   
   <!-- always get the last jquery version -->
-  <script src="http://ajax.googleapis.com/ajax/libs/jquery/1/jquery.min.js" type="text/javascript"></script>
+  <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.8.3/jquery.min.js" type="text/javascript"></script>
   <script src="facybox.js" type="text/javascript"></script>
   <script type="text/javascript">
     jQuery(document).ready(function($) {
@@ -49,6 +49,7 @@
         <div class="example news" id="changelog">
             <h2>Changelog</h2>
             <ul>
+                <li>1.2.3 - Changed jQuery to 1.8.3 (1.9+ will break because of $.browser)</li>
                 <li>1.2.1 - Added <em>packetmonkey</em>'s code to recognize Content-type headers sent by the server</li>
                 <li>1.2 - Added support for Internet Explorer
                     <ul>
@@ -91,7 +92,7 @@
         <div class="example">
           <h2>Download</h2>
 
-          <p>Requires <a href="http://jquery.com">jQuery >= 1.2.1</a>.</p>
+          <p>Requires <a href="http://jquery.com">jQuery >= 1.2+</a>. <b>Important:</b> 1.9+ will break facybox. Wait for a new version.</p>
           <p>
             You'll need a loading image, close label, four corners, and solid border images in addition to the javascript and css files.  All are included
             in the package.
